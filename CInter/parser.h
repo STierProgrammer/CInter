@@ -18,7 +18,15 @@ class Parser {
 		std::unique_ptr<Expression> parseExpression();
 		std::unique_ptr<Expression> parseAssignmentExpression();
 		std::unique_ptr<Expression> parseObjectExpression();
-		std::unique_ptr<Expression> parseAddtiveExpression();
+		std::unique_ptr<Expression> parseAdditiveExpression();
+		std::unique_ptr<Expression> parseMultiplicativeExpression();
+		std::unique_ptr<Expression> parseCallMemberExpression();
+		std::unique_ptr<Expression>	parseCallExpression(std::unique_ptr<Expression> caller);
+		std::vector<std::unique_ptr<Expression>> parseArgs();
+		std::vector<std::unique_ptr<Expression>> parseArgsList();
+		std::unique_ptr<Expression>	parseMemberExpression();
+		std::unique_ptr<Expression> parsePrimaryExpression();;
+	
 	public:
-		Program produceAST(std::string& sourceCode);
+		std::unique_ptr<Program> produceAST(std::string& sourceCode);
 };

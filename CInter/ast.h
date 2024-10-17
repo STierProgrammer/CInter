@@ -19,12 +19,14 @@ enum class NodeType {
 };
 
 struct Statement {
-    NodeType kind { NodeType::Program };
+    NodeType kind { };
 
     virtual ~Statement() noexcept = default;
 };
 
-struct Expression : public Statement {};
+struct Expression : public Statement {
+   
+};
 
 struct Program : public Statement {
     std::vector<std::unique_ptr<Statement>> body;
@@ -42,11 +44,10 @@ struct Program : public Statement {
     ~Program() noexcept override = default;
 };
 
-
-struct Identifier : public Expression {
+struct _Identifier : public Expression {
     std::string symbol;
 
-    Identifier() {
+    _Identifier(const std::string& sym) : symbol(sym) {
         kind = NodeType::Identifier;
     }
 };
@@ -117,7 +118,7 @@ struct MemberExpression : public Expression {
 };
 
 struct CallExpression : public Expression {
-    std::unique_ptr<std::vector<Expression>> args;
+    std::vector<std::unique_ptr<Expression>> args;
     std::unique_ptr<Expression> caller;
 
     CallExpression() {

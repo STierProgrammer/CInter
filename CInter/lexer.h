@@ -26,6 +26,7 @@ enum TokenType {
 	CloseBrace,
 	OpenBracket,
 	CloseBracket,
+	Dot,
 	_EOF,
 };
 

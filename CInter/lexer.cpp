@@ -78,6 +78,10 @@ std::vector<Token> Tokenize(const std::string& sourceCode)
 				tokens.push_back({ "}", TokenType::CloseBrace });
 				++it;
 				break;
+			case '.':
+				tokens.push_back({ ".", TokenType::Dot });
+				++it;
+				break;
 			case '+':
 			case '-':
 			case '*':
