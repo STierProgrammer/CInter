@@ -45,6 +45,9 @@
     <ClCompile Include="environment.cpp">
       <Filter>Source Files\Core\Interpreter</Filter>
     </ClCompile>
+    <ClCompile Include="interpreter.cpp">
+      <Filter>Source Files\Core\Interpreter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lexer.h">
@@ -66,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="environment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interpreter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

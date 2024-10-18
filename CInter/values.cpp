@@ -14,3 +14,8 @@ std::unique_ptr<BooleanValue> MAKE_BOOL(bool b)
 {
     return std::make_unique<BooleanValue>(b);
 }
+
+std::unique_ptr<NativeFunctionValue> MAKE_NATIVE_FUNCTION(FunctionCall call)
+{
+    return std::make_unique<NativeFunctionValue>(call);
+}

@@ -3,12 +3,16 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <vector>
+#include <functional>
+#include "environment.h"
 
 enum class ValueType {
 	Null,
 	Number,
 	Boolean,
-	Object
+	Object,
+	nativeFunction
 };
 
 struct RuntimeValue {
@@ -52,6 +56,17 @@ struct ObjectValue : public RuntimeValue {
 	std::map<std::string, std::unique_ptr<RuntimeValue>> properties;
 };
 
+using FunctionCall = std::function<RuntimeValue>(const std::vector<RuntimeValue>&, Environment&);
+
+struct NativeFunctionValue : public RuntimeValue {
+	ValueType getType() const override {
+		return ValueType::nativeFunction;
+	}
+
+	FunctionCall call;
+};
+
 std::unique_ptr<NullValue> MAKE_NULL();
 std::unique_ptr<NumberValue> MAKE_NUMBER(double n = 0.0);
 std::unique_ptr<BooleanValue> MAKE_BOOL(bool b = true);
+std::unique_ptr<NativeFunctionValue> MAKE_NATIVE_FUNCTION(FunctionCall call);

@@ -11,10 +11,8 @@ enum TokenType {
 	Identifier,
 	Let,
 	Const,
-	If,
-	ElseIf,
-	Else,
-	While,
+	Exostatic,
+	Static,
 	BinaryOperaotr,
 	Equals, 
 	Comma,
@@ -30,12 +28,11 @@ enum TokenType {
 	_EOF,
 };
 
-const std::unordered_map<std::string, TokenType> KEYWORDS{
+const std::unordered_map<std::string, TokenType> KEYWORDS {
 	{ "let", TokenType::Let },
 	{ "const", TokenType::Const },
-	{ "if", TokenType::If },
-	{ "elif", TokenType::ElseIf },
-	{ "else", TokenType::Else }
+	{ "exostatic", TokenType::Exostatic },
+	{ "static", TokenType::Static }
 };
 
 struct Token {

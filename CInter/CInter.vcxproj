@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="environment.cpp" />
     <ClCompile Include="expressions.cpp" />
+    <ClCompile Include="interpreter.cpp" />
     <ClCompile Include="lexer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="parser.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="ast.h" />
     <ClInclude Include="environment.h" />
     <ClInclude Include="expressions.h" />
+    <ClInclude Include="interpreter.h" />
     <ClInclude Include="lexer.h" />
     <ClInclude Include="parser.h" />
     <ClInclude Include="statement.h" />

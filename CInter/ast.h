@@ -80,8 +80,8 @@ struct AssignmentExpression : public Expression {
 };
 
 struct BinaryExpression : public Expression {
-    std::unique_ptr<Expression> left;
-    std::unique_ptr<Expression> right;
+    std::shared_ptr<Expression> left;
+    std::shared_ptr<Expression> right;
     std::string _operator;
 
     BinaryExpression() {
@@ -112,7 +112,7 @@ struct MemberExpression : public Expression {
 
     bool computed;
 
-    MemberExpression() {
+    MemberExpression(bool comp) {
         kind = NodeType::MemberExpression;
     }
 };

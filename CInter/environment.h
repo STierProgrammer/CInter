@@ -17,6 +17,7 @@ class Environment {
 	
 	public:
 		Environment(std::shared_ptr<Environment> parentENV = nullptr) : parent(parentENV) {}
+        
         std::shared_ptr<RuntimeValue> declareVariable(const std::string& varname, std::shared_ptr<RuntimeValue> value, bool constant) {
             if (variables.find(varname) != variables.end()) {
                 throw std::runtime_error("Cannot declare variable " + varname + ". As it already is defined.");
@@ -39,15 +40,19 @@ class Environment {
             }
 
             env->variables[varname] = value;
+            
             return value;
         }
 
         std::shared_ptr<RuntimeValue> lookupVariable(const std::string& varname) {
             Environment* env = resolve(varname);
+            
             auto it = env->variables.find(varname);
+            
             if (it == env->variables.end()) {
                 throw std::runtime_error("Cannot find variable " + varname);
             }
+            
             return it->second;
         }
 
@@ -63,5 +68,4 @@ class Environment {
 
             throw std::runtime_error("Cannot resolve '" + varname + "' as it does not exist.");
         }
-
 };
